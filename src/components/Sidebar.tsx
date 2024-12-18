@@ -1,4 +1,4 @@
-import { Home, Calendar, Display, Users, Settings, CreditCard } from "lucide-react";
+import { Home, Calendar, Monitor, Users, Settings, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -8,13 +8,13 @@ const Sidebar = () => {
   const adminMenuItems = [
     { icon: Home, label: "Dashboard", path: "/" },
     { icon: Users, label: "User Orders", path: "/orders" },
-    { icon: Display, label: "Displays", path: "/displays" },
+    { icon: Monitor, label: "Displays", path: "/displays" },
     { icon: Calendar, label: "Schedule", path: "/schedule" },
     { icon: Settings, label: "Account", path: "/account" },
   ];
 
   const guestMenuItems = [
-    { icon: Display, label: "Displays", path: "/displays" },
+    { icon: Monitor, label: "Displays", path: "/displays" },
     { icon: Calendar, label: "Schedule", path: "/schedule" },
     { icon: CreditCard, label: "Subscription", path: "/subscription" },
     { icon: Settings, label: "Account", path: "/account" },

@@ -36,10 +36,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = (email: string, password: string) => {
     // Mock login - in real app, validate credentials
-    const mockUser = {
+    const mockUser: User = {
       id: '1',
       email,
-      role: email.includes('admin') ? 'admin' : 'guest' as const,
+      role: email.includes('admin') ? 'admin' : 'guest',
     };
     setUser(mockUser);
     localStorage.setItem('user', JSON.stringify(mockUser));
@@ -47,7 +47,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const register = (email: string, password: string, role: 'admin' | 'guest') => {
     // Mock registration - in real app, create user in backend
-    const newUser = {
+    const newUser: User = {
       id: Math.random().toString(),
       email,
       role,
