@@ -7,6 +7,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Schedule from "./pages/Schedule";
 import Orders from "./pages/Orders";
+import Displays from "./pages/Displays";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/displays" element={<Displays />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
