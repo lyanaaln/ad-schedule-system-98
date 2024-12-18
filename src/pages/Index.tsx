@@ -1,8 +1,20 @@
 import { Clock, DollarSign, Play, Users } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import DashboardCard from "@/components/DashboardCard";
+import LoginForm from "@/components/LoginForm";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Index = () => {
+  const { user } = useAuth();
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <LoginForm />
+      </div>
+    );
+  }
+
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />

@@ -1,13 +1,26 @@
-import { Home, Calendar, PieChart, Settings } from "lucide-react";
+import { Home, Calendar, Display, Users, Settings, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Sidebar = () => {
-  const menuItems = [
+  const { user, logout } = useAuth();
+
+  const adminMenuItems = [
     { icon: Home, label: "Dashboard", path: "/" },
+    { icon: Users, label: "User Orders", path: "/orders" },
+    { icon: Display, label: "Displays", path: "/displays" },
     { icon: Calendar, label: "Schedule", path: "/schedule" },
-    { icon: PieChart, label: "Reports", path: "/reports" },
-    { icon: Settings, label: "Settings", path: "/settings" },
+    { icon: Settings, label: "Account", path: "/account" },
   ];
+
+  const guestMenuItems = [
+    { icon: Display, label: "Displays", path: "/displays" },
+    { icon: Calendar, label: "Schedule", path: "/schedule" },
+    { icon: CreditCard, label: "Subscription", path: "/subscription" },
+    { icon: Settings, label: "Account", path: "/account" },
+  ];
+
+  const menuItems = user?.role === 'admin' ? adminMenuItems : guestMenuItems;
 
   return (
     <div className="h-screen w-64 bg-white border-r border-gray-200 fixed left-0 top-0">
@@ -25,6 +38,13 @@ const Sidebar = () => {
             {item.label}
           </Link>
         ))}
+        <button
+          onClick={logout}
+          className="flex items-center px-6 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary transition-colors w-full"
+        >
+          <Settings className="h-5 w-5 mr-3" />
+          Logout
+        </button>
       </nav>
     </div>
   );
